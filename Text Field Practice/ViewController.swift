@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: - Outlets
     
@@ -16,14 +16,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField2: UITextField!
     @IBOutlet weak var textField3: UITextField!
     
-    //MARK: - Delegates
+    //MARK: - Delegate objects
+    
+    let zipcodeDelegate = ZipcodeDelegate()
+    let cashDelegate = CashDelegate()
+    let lockableDelegate = LockableDelegate()
     
     
     //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Set the delegates
+        
+        textField1.delegate = zipcodeDelegate
+        textField2.delegate = cashDelegate
+        textField3.delegate = lockableDelegate
+        
     }
 
     
