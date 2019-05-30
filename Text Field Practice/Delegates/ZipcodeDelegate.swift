@@ -15,19 +15,11 @@ class ZipcodeDelegate: NSObject, UITextFieldDelegate {
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Prevent invalid character input, if keyboard is numberpad
-//        if (textField.keyboardType == UIKeyboardType.decimalPad) {
-//            let alphabet = textField.text ?? ""
-//            let alpha = alphabet.rangeOfCharacter(from: CharacterSet.decimalDigits)
-//
-//
-//        }
-        let currentText = textField.text ?? ""
-    
-        guard let stringRange = Range(range, in: currentText) else { return false }
         
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        var newText = textField.text! as NSString
+        newText = newText.replacingCharacters(in: range, with: string) as NSString
         
-        return updatedText.count <= 5
+        
+        return newText.length <= 5
     }
 }
