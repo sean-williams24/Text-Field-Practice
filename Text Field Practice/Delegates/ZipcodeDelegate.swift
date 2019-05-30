@@ -19,7 +19,16 @@ class ZipcodeDelegate: NSObject, UITextFieldDelegate {
         var newText = textField.text! as NSString
         newText = newText.replacingCharacters(in: range, with: string) as NSString
         
-        
+        textField.clearsOnBeginEditing = true
         return newText.length <= 5
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+ 
+    
+    
 }
